@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Voice AI</string>
+    <string name="accessibility_service_description">
+        Voice AI ko WhatsApp aur doosre apps mein aapki taraf se type/click
+        karne ki ijazat deta hai, sirf jab aap voice command dein.
+    </string>
+</resources>
