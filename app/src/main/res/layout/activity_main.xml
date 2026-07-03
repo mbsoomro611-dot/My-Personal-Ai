@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#070A12">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="24dp"
-    android:background="#070A12">
+    android:padding="24dp">
 
     <TextView
         android:id="@+id/statusText"
@@ -40,21 +44,45 @@
         android:layout_marginTop="32dp"
         android:text="Accessibility Permission ON karein" />
 
-    <EditText
-        android:id="@+id/apiKeyInput"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="Anthropic API key yahan paste karein"
+        android:layout_marginTop="32dp"
+        android:text="Contacts"
+        android:textColor="#E7ECF3"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/contactNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Naam (jaisa aap bolenge)"
+        android:textColorHint="#6E7A8C"
+        android:textColor="#E7ECF3" />
+
+    <EditText
+        android:id="@+id/contactPhoneInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone number (+92...)"
         android:textColorHint="#6E7A8C"
         android:textColor="#E7ECF3"
-        android:inputType="textPassword" />
+        android:inputType="phone" />
 
     <Button
-        android:id="@+id/saveKeyButton"
+        android:id="@+id/addContactButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Key Save Karein" />
+        android:text="Contact Add Karein" />
+
+    <TextView
+        android:id="@+id/contactsListText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="#6E7A8C"
+        android:textSize="13sp" />
 
 </LinearLayout>
+</ScrollView>
