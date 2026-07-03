@@ -3,6 +3,8 @@ package com.example.voiceai
 import android.os.Handler
 import android.os.Looper
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
@@ -41,12 +43,14 @@ Leave fields empty ("") if not applicable. Never invent a phone number if none w
             }))
         }
 
+        val requestBody = body.toString().toRequestBody("application/json".toMediaType())
+
         val request = Request.Builder()
             .url("https://api.anthropic.com/v1/messages")
             .addHeader("x-api-key", apiKey)
             .addHeader("anthropic-version", "2023-06-01")
             .addHeader("content-type", "application/json")
-            .post(RequestBody.create(MediaType.parse("application/json"), body.toString()))
+            .post(requestBody)
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -55,7 +59,7 @@ Leave fields empty ("") if not applicable. Never invent a phone number if none w
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val raw = response.body()?.string()
+                val raw = response.body?.string()
                 val parsed = try {
                     val root = JSONObject(raw ?: "")
                     val text = root.getJSONArray("content").getJSONObject(0).getString("text")
